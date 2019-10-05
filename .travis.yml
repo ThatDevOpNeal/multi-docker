@@ -10,15 +10,15 @@ script:
   - docker run -e CI=true nbharucha/react-test npm test
 
 after_success:
-  - docker build -t nbharucha/multi-client ./client
-  - docker build -t nbharucha/multi-nginx ./nginx
-  - docker build -t nbharucha/multi-server ./server
-  - docker build -t nbharucha/multi-worker ./worker
+  - docker build -t nbharucha1/multi-client ./client
+  - docker build -t nbharucha1/multi-nginx ./nginx
+  - docker build -t nbharucha1/multi-server ./server
+  - docker build -t nbharucha1/multi-worker ./worker
   # First log in to the docker CLI (for docker hub)
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push nbharucha/multi-client
-  - docker push nbharucha/multi-nginx
-  - docker push nbharucha/multi-server
-  - docker push nbharucha/multi-worker
+  - docker push nbharucha1/multi-client
+  - docker push nbharucha1/multi-nginx
+  - docker push nbharucha1/multi-server
+  - docker push nbharucha1/multi-worker
   # AWS BeanStalk will be pulling images from docker hub
